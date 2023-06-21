@@ -7,7 +7,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeRaw from "rehype-raw"; 
 
 import styles from "./Chat.module.css";
-import Azure from "../../assets/Azure.svg";
+import Chatbot from "../../assets/chatbot.png";
 
 import {
     ChatMessage,
@@ -142,16 +142,9 @@ const Chat = () => {
         <div className={styles.container}>
             {showAuthMessage ? (
                 <Stack className={styles.chatEmptyState}>
-                    <ShieldLockRegular className={styles.chatIcon} style={{color: 'darkorange', height: "200px", width: "200px"}}/>
-                    <h1 className={styles.chatEmptyStateTitle}>Authentication Not Configured</h1>
                     <h2 className={styles.chatEmptyStateSubtitle}>
-                        This app does not have authentication configured. Please add an identity provider by finding your app in the 
-                        <a href="https://portal.azure.com/" target="_blank"> Azure Portal </a>
-                        and following 
-                         <a href="https://learn.microsoft.com/en-us/azure/app-service/scenario-secure-app-authentication-app-service#3-configure-authentication-and-authorization" target="_blank"> these instructions</a>.
-                    </h2>
-                    <h2 className={styles.chatEmptyStateSubtitle} style={{fontSize: "20px"}}><strong>Authentication configuration takes a few minutes to apply. </strong></h2>
-                    <h2 className={styles.chatEmptyStateSubtitle} style={{fontSize: "20px"}}><strong>If you deployed in the last 10 minutes, please wait and reload the page after 10 minutes.</strong></h2>
+                        Loading...
+                    </h2>                    
                 </Stack>
             ) : (
                 <Stack horizontal className={styles.chatRoot}>
@@ -159,12 +152,12 @@ const Chat = () => {
                         {!lastQuestionRef.current ? (
                             <Stack className={styles.chatEmptyState}>
                                 <img
-                                    src={Azure}
+                                    src={Chatbot}
                                     className={styles.chatIcon}
                                     aria-hidden="true"
                                 />
-                                <h1 className={styles.chatEmptyStateTitle}>Start chatting</h1>
-                                <h2 className={styles.chatEmptyStateSubtitle}>This chatbot is configured to answer your questions</h2>
+                                <h1 className={styles.chatEmptyStateTitle}>HR Demo</h1>
+                                <h2 className={styles.chatEmptyStateSubtitle}>Chiedi al chatbot informazioni sulla documentazione indicizzata</h2>
                             </Stack>
                         ) : (
                             <div className={styles.chatMessageStream} style={{ marginBottom: isLoading ? "40px" : "0px"}}>
@@ -195,7 +188,7 @@ const Chat = () => {
                                         <div className={styles.chatMessageGpt}>
                                             <Answer
                                                 answer={{
-                                                    answer: "Generating answer...",
+                                                    answer: "Generazione risposta...",
                                                     citations: []
                                                 }}
                                                 onCitationClicked={() => null}
@@ -234,7 +227,7 @@ const Chat = () => {
                             />
                             <QuestionInput
                                 clearOnSend
-                                placeholder="Type a new question..."
+                                placeholder="Scrivi la tua domanda..."
                                 disabled={isLoading}
                                 onSend={question => makeApiRequest(question)}
                             />

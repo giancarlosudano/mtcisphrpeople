@@ -1,6 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import styles from "./Layout.module.css";
 import Azure from "../../assets/Azure.svg";
+import Isp from "../../assets/isplogo.png";
 import { CopyRegular, ShareRegular } from "@fluentui/react-icons";
 import { Dialog, Stack, TextField } from "@fluentui/react";
 import { useEffect, useState } from "react";
@@ -37,16 +38,12 @@ const Layout = () => {
                 <div className={styles.headerContainer}>
                     <Stack horizontal verticalAlign="center">
                         <img
-                            src={Azure}
+                            src={Isp}
                             className={styles.headerIcon}
                             aria-hidden="true"
                         />
-                        <Link to="/" className={styles.headerTitleContainer}>
-                            <h3 className={styles.headerTitle}>Azure AI</h3>
-                        </Link>
-                        <div className={styles.shareButtonContainer} role="button" tabIndex={0} aria-label="Share" onClick={handleShareClick} onKeyDown={e => e.key === "Enter" || e.key === " " ? handleShareClick() : null}>
-                            <ShareRegular className={styles.shareButton} />
-                            <span className={styles.shareButtonText}>Share</span>
+                        <div className={styles.shareButtonContainer}>
+                            <h3 className={styles.headerText}>Innovation & Processes - Generative AI Demo</h3>
                         </div>
                     </Stack>
                 </div>
